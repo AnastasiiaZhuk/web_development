@@ -1,0 +1,4 @@
+.idea
+frontend/migrations
+myapi/migrations
+venv

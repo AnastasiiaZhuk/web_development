@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/design.css">
+</head>
+<body>
+        <ul class="snip1217">
+            <li class="current"><a href="first_page.html"> Main </a></li>
+                <li><a href="#add-event1">Add a new event</a></li>
+                <li><a  href="#sign">Sign Up</a></li>
+                <li><a href="#events-div"> Events</a> </li>
+                <li><a href="show_participants.html"> Participants</a></li>
+        </ul>
+        <div class="parallax">
+            <div class="calendar">
+                    <div class="month">
+                        <ul>
+                            <li class="prev">&#10094;</li>
+                            <li class="next">&#10095;</li>
+                            <li> March<br><span></span></li>
+                        </ul>
+                    </div>
+
+                    <ul class="weekdays">
+                      <li>Mo</li>
+                      <li>Tu</li>
+                      <li>We</li>
+                      <li>Th</li>
+                      <li>Fr</li>
+                      <li>Sa</li>
+                      <li>Su</li>
+                    </ul>
+                    <ul class="days">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>10</li>
+                        <li>11</li>
+                        <li>12</li>
+                        <li>13</li>
+                        <li>14</li>
+                        <li>15</li>
+                        <li>16</li>
+                        <li>17</li>
+                        <li>18</li>
+                        <li>19</li>
+                        <li><span class="active"> 20 </span></li>
+                        <li>21</li>
+                        <li>22</li>
+                        <li>23</li>
+                        <li>24</li>
+                        <li>25</li>
+                        <li>26</li>
+                        <li>27</li>
+                        <li>28</li>
+                        <li>29</li>
+                        <li>30</li>
+                    </ul>
+            </div>
+        </div>
+        <div class="parallax">
+            <div class="list-type" id="events-div">
+                <h1 >
+                    Events for
+                        you!
+                </h1>
+                <ol id="ourcontainer">
+                </ol>
+
+            </div>
+        </div>
+        <div class="sign-in" id="sign">
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+                        <h2 class="active"> Sign In </h2>
+                        <h2 class="inactive underlineHover"> <a class="a1" href="#sign-up1">Sign Up </a></h2>
+                        <div class="sign_in">
+                            <form id="login_form" method="post" action=".">
+                                {% csrf_token %}
+                                 <label></label> <input type="text"  class="fadeIn second" name="username"
+                                                                                  required maxlength="150" id="login" placeholder="login">
+                                <label ></label> <input type="password" class="fadeIn third"
+                                                                                  name="password" required id="login1" placeholder="password">
+                                <input type="submit" value="Log in" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </form>
+                            <p>
+                                Not a member?
+                                <a href="#sign-up1">Register</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-event" id="add-event1">
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+                    <h1>Add an Event</h1>
+                    <form id="event_form" method="post" action=".">
+                            <p>
+                                {% csrf_token %}
+                                <input type="text" id="title" class="fadeIn second" name="title" placeholder="title">
+                                <input type="text" id="description" class="fadeIn third" name="description" placeholder="description">
+                                <input type="date" id="date" class="fadeIn fourth" name="date" placeholder="date">
+                            </p>
+                        <input type="submit" name="Submit" onclick="addEvent()" value="Create Event" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    <div class="sing-up" id="sign-up1">
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+                        <h2 class="active"> Sign Up </h2>
+                        <h2 class="inactive underlineHover"> <a class="a1" href="#sign">Sign in</a> </h2>
+                        <form role="form" method="post" action="." enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label for="id_username"></label> <input type="text"  class="fadeIn second" name="username" id="id_username"
+                                                                                  required maxlength="150"  placeholder="login" >
+                            <label for="id_email"></label><input type="email" class="fadeIn fourth"
+                                                                                    name="email" required id="id_email" placeholder="email">
+                            <label for="id_password1"></label> <input type="password" class="fadeIn third"
+                                                                                  name="password1" required id="id_password1" placeholder="password1">
+                            <label for="id_password2"></label> <input type="password" class="fadeIn fifth"
+                                                                                  name="password2" required id="id_password2" placeholder="password2">
+                            <input type="submit" name="Submit" onclick="registering()" value="Submit"/>
+                        </form>
+                        <p>
+                            You a member?
+                            <a href="#sign">Login</a>
+                        </p>
+                </div>
+            </div>
+        </div>
+    <div class="event-info">
+        <div class="wrapper_div fadeInDown">
+            <div id="formContent">
+{#                    <h1>Disco</h1>#}
+{#                    <p> Very cool disco<br>#}
+{#                        Date: 10-03-2020<br>#}
+{#                       Organizer: Oleg<br>#}
+{#                    </p>#}
+                {% csrf_token %}
+                <input type="text" name="title" id="title1" placeholder="title"
+                       required maxlength="150"  >
+                <input type="text" name="description" required id="description1">
+                <input type="date" name="date" required id="date1">
+                <div class="buttons">
+
+                    <button name="Delete" onclick="deleteEvent()"> Delete </button>
+                    <button name="Get" onclick="getEvent()" > Get </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
