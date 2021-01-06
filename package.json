@@ -33,7 +33,7 @@
     "@brainhubeu/react-carousel": "^1.15.2",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
